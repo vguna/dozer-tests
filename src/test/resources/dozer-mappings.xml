@@ -1,0 +1,46 @@
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<!-- SubclassMappingOverrideSuperclassMappingTest -->
+
+	<!-- we never want to overwrite object identity -->
+	<mapping>
+		<class-a>test.model.AbstractEntity</class-a>
+		<class-b>test.model.AbstractDto</class-b>
+		<field type="one-way">
+			<a>id</a>
+			<b>id</b>
+		</field>
+	</mapping>
+	
+	<!-- normal mapping with different attribute names-->
+	<mapping>
+		<class-a>test.model.MyEntity</class-a>
+		<class-b>test.model.MyDto</class-b>
+		<field>
+			<a>name</a>
+			<b>otherName</b>
+		</field>
+	</mapping>
+	
+	<!-- for subclasses we would like to e.g. exclude atttributes from superclass - which doesn't work -->
+	<mapping>
+		<class-a>test.model.MySubEntity</class-a>
+		<class-b>test.model.MySubDto</class-b>
+		<field-exclude>
+			<a>excludeMe</a>
+			<b>excludeMe</b>
+		</field-exclude>
+	</mapping>
+	
+	
+	<!-- OneWayClassMappingTest -->
+	
+	<!-- we want to map the entity to a minimal dto but not back -->
+	<mapping type="one-way">
+		<class-a>test.model.MyEntity</class-a>
+		<class-b>test.model.MyMinimalDto</class-b>
+	</mapping>
+	
+</mappings>
