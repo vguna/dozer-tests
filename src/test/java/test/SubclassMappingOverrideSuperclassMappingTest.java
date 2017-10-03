@@ -5,7 +5,8 @@ import static org.testng.Assert.assertNull;
 
 import java.util.Arrays;
 
-import org.dozer.DozerBeanMapper;
+import org.dozer.DozerBeanMapperBuilder;
+import org.dozer.Mapper;
 import org.testng.annotations.Test;
 
 import test.model.MySubDto;
@@ -13,7 +14,7 @@ import test.model.MySubEntity;
 
 public class SubclassMappingOverrideSuperclassMappingTest {
 
-	private DozerBeanMapper mapper = new DozerBeanMapper(Arrays.asList("dozer-mappings.xml"));
+	private Mapper mapper = DozerBeanMapperBuilder.create().withMappingFiles(Arrays.asList("dozer-mappings.xml")).build();
 
 	@Test
 	public void testEntity2Dto() {
